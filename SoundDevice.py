@@ -5,7 +5,7 @@ import sounddevice as sd
 import wave as wv
 import numpy as np
 
-duration = int(input('How much do you like to record: '))
+duration = int(input('How much would you like to record: '))
 sampate = 44100
 
 # This function below gives You the list of all availible input & output devices.
