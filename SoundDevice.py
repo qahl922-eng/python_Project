@@ -16,7 +16,7 @@ sd.default.device = (2, 5)
 # The funcion sd.rec records the sound coming from selected microphone...
 print('Recording is started...')
 audio = sd.rec(duration * sampate,  samplerate = sampate, channels = 1,)
-sd.wait()    # This  pauses the execution  untill the rec function is done  recording..
+sd.wait()    # This  pauses the execution untill the rec function is done recording..
 print('Recording is Done!')
 
 # This line convets the data which is in -1 -> +1 range coming from rec function to 16-bit binary integers...
@@ -27,7 +27,7 @@ print('Playing the sound now!')
 se = sd.play(audio, samplerate = 44100)
 sd.wait()
 
-# Heree we are using wave module's open function to save that audio data into wave files
+# Here we are using wave module's open function to save that audio data into wave files
 with wv.open('record1.wav', 'wb') as rr:
     rr.setframerate(sampate)
     rr.setnchannels(1)
