@@ -11,6 +11,7 @@ import wave
 import numpy as np
 
 sd.default.device = (2, 5)
+Samplerate = 44100
 filelist = []
 
 while True:
@@ -23,7 +24,6 @@ while True:
 for el in range(RecordN):
 
     print('Recording # %d' %(el+1))
-    Samplerate = 44100
     while True:
         try:
             time = int(input('How long do you want to record: '))
@@ -47,7 +47,7 @@ sd.play(np.concatenate(filelist), Samplerate)
 sd.wait()
 
 print('Combining and saving all the audio files...')
-Files = np.concatenate(filelist)
+Files = np.concatenate(filelist)  # Combining all the numpy arrays of different recording into one using np.concatenate()
 with wave.open('final_recoding.wav', 'wb') as fl:
     fl.setframerate(Samplerate)
     fl.setnchannels(1)
