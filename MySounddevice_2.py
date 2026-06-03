@@ -28,21 +28,21 @@ while True:
     except ValueError:
         print('Nope, You have to enter an integer')
 
-# if speed == 2:
-#     sp = 2
-# elif speed == 0.5:
-#     sp = 0.5
-# else:
-#     print('your input is niether 2 nor 0.5, so paying at 1.')
-#     sp = 1
+if speed == 2:
+    sp = 2
+elif speed == 0.5:
+    sp = 0.5
+else:
+    print('your input is niether 2 nor 0.5, so paying at 1.')
+    sp = 1
 
-sd.play(audio, samplerate * speed)
+sd.play(audio, samplerate * sp)
 sd.wait()
 
 AA = np.int16(audio * 32767)
 
 with wave.open('Mysd2.wav', 'wb') as wv:
-    wv.setframerate(samplerate*speed)
+    wv.setframerate(samplerate*sp)
     wv.setnchannels(1)
     wv.setsampwidth(2)
     wv.writeframes(AA.tobytes())
