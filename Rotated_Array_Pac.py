@@ -31,20 +31,83 @@ def Rotated(nums, Target):
 '''Practice Problem # 01 — Find Minimum in Rotated Sorted Array: You are given a sorted array that has been rotated between 
                            1 and n times. Find the minimum element in the array. You must do it in O(log n).
                            Read pdf file to understnd the problem'''
+# Although after many debuggings from GPT, this is my own solution
 
-def rotated3(nums):
+def rotatedsmall(nums):
+    l = 0
+    r = len(nums) - 1
+
+    while l < r:
+
+        mid = (l + r) // 2
+        
+        if nums[mid] > nums[r]:
+            l = mid + 1
+
+        else:
+            r = mid
+    return nums[l] 
+
+''' Time Complexity: O(log n)      Space Complexity: O(1) '''
+
+'''Practice Problem # 02 — Search in Rotated Sorted Array II: You are given a rotated sorted array nums that may contain duplicates,
+                           and an integer target. Return True if target exists in the array, otherwise return False.'''
+# Although with the help of one hint from chatGPT, But overall this is my solution
+def roatatedII(nums, target):
     l = 0
     r = len(nums) - 1
 
     while l <= r:
 
         mid = (l + r) // 2
-        
-        if nums[l] <= nums[mid]:
-            if nums[mid] > nums[r] or nums[l] > nums[r]:
 
+        if nums[mid] == target:
+            return True
+        if nums[l] == nums[mid] == nums[r]:  # This was a ChatGPT's Hint.
+            l += 1
+            r -= 1
+            continue
+        if nums[l] <= nums[mid]:
+            if target < nums[mid] and nums[l] <= target:
+                r = mid - 1
+            else:
+                l = mid + 1
+        else:       
+            if target > nums[mid] and nums[r] >= target:
+                l = mid + 1
+            else:
+                r = mid - 1
+    return False
+
+''' Time Complexity: Average O(log n),      Worst O(n) (due to duplicates)            Space Complexity: O(1)''' 
+# read Pdf for understanding multiple time complexity
+
+'''Practice Problem # 03: Rotation Count: You are given a sorted array that has been rotated some number of times. 
+                          Return how many times the array was rotated. Think of rotation as taking element from the 
+                          end of the array and putting them at the front. Every time you rotate once, the smallest 
+                          element moves one index forward'''
+
+def RotationCount(nums):
+
+    l = 0
+    r = len(nums) - 1
+    count = 0
+
+    while l < r:
+
+        mid = (l + r) // 2
         
+        if nums[mid] > nums[r]:
+            l = mid + 1
+            count += 1
         else:
+            r = mid
+
+    return l
+
+AA = [5,6,7,1,2,3,4]
+print(RotationCount(AA))
+
 
 
 
