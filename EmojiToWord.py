@@ -25,7 +25,7 @@ print(emoji.demojize(text, delimiters = (':',':')))
 print(emoji.emojize(texto,language ='en', delimiters = (':',':')))
 
 # This Func takes in single character and tells you whether it is an emoji or not, by True or False. if > 1 character, also returns false. 
-print(emoji.is_emoji('💚'))
+print(emoji.is_emoji('💚💚'))
 
 # This function returns the list of unique emoji's only but in a random order.
 print(emoji.distinct_emoji_list(text))
