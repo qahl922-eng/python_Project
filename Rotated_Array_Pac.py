@@ -86,12 +86,12 @@ def roatatedII(nums, target):
                           Return how many times the array was rotated. Think of rotation as taking element from the 
                           end of the array and putting them at the front. Every time you rotate once, the smallest 
                           element moves one index forward'''
+# Without The Help of ChatGPT, this is compeletly my own solution.
 
 def RotationCount(nums):
 
     l = 0
     r = len(nums) - 1
-    count = 0
 
     while l < r:
 
@@ -99,15 +99,31 @@ def RotationCount(nums):
         
         if nums[mid] > nums[r]:
             l = mid + 1
-            count += 1
         else:
             r = mid
 
     return l
 
-AA = [5,6,7,1,2,3,4]
-print(RotationCount(AA))
+'''Time Complexity: O(log n)             Space Complexity: O(1)'''
 
+'''Practice Problem # 04 — Find Peak Element a peak element is an element that is strictly greater than its neighbors. 
+                           Given an integer array nums, find a peak element and return its index. If the array contains
+                           multiple peaks, return the index of any one of them.'''
 
+def peakelement(nums):
 
+    l = 0
+    r = len(nums) - 1
 
+    while l < r:
+
+        mid = (l + r) // 2
+
+        if nums[mid] < nums[mid + 1]:
+            l = mid + 1
+        if nums[mid] > nums[mid+1]:
+            r = mid 
+
+    return max(l, -1)
+
+print(peakelement([1,2,3,1]))
