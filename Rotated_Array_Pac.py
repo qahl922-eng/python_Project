@@ -109,6 +109,7 @@ def RotationCount(nums):
 '''Practice Problem # 04 — Find Peak Element a peak element is an element that is strictly greater than its neighbors. 
                            Given an integer array nums, find a peak element and return its index. If the array contains
                            multiple peaks, return the index of any one of them.'''
+# With The Help of ChatGPT's slight Hint, this is compeletly my own solution.
 
 def peakelement(nums):
 
@@ -121,9 +122,9 @@ def peakelement(nums):
 
         if nums[mid] < nums[mid + 1]:
             l = mid + 1
-        if nums[mid] > nums[mid+1]:
+        else:
             r = mid 
 
-    return max(l, -1)
+    return l
 
-print(peakelement([1,2,3,1]))
+'''Time Complexity: O(log n)             Space Complexity: O(1)'''
